@@ -1,9 +1,15 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-item class="page3background q-px-xl">
+    <q-item class="page3background">
+      <div
+        class="fixed-top"
+        style="z-index: 100; height: 15%; background: linear-gradient(to bottom, rgba(13,22,54, 1) 0%, rgba(0, 0, 0, 0) 100%);
+
+"
+      />
       <div
         class="q-gutter-md wrapper"
-        style="backgroundColor: orange; height: 80%; overflow-y: auto"
+        style=" padding-top: 4rem; backgroundColor: transparent; height: 90%; overflow-y: auto; "
       >
         <h2 class="text-h2 text-primary header-text">
           Please, tell us a little about yourself.
@@ -58,7 +64,6 @@
                 class="search-input"
                 outlined
                 square
-                mask="####-######"
                 v-model="guest.phoneNumber"
                 label="Your phone number"
                 :rules="[val => !!val]"
@@ -78,7 +83,7 @@
             <div class="col text-secondary ">
               Did you bring a colleague?
               <div class="row q-mt-xs">
-                <transition-group name="glide" tag="div" class="col-12">
+                <transition-group name="fade" tag="div" class="col-12">
                   <div
                     class="col-12 q-mb-sm"
                     v-for="colleague in guest.colleagues"
@@ -102,10 +107,7 @@
                     ></q-input>
                   </div>
                 </transition-group>
-                <span
-                  id="scrollRef"
-                  style="width: 2px; height: 2px; background-color: green;"
-                ></span>
+                <div ref="scrollRef"></div>
               </div>
             </div>
             <div
@@ -169,12 +171,6 @@ const { getScrollTarget, setScrollPosition } = scroll;
 export default {
   data() {
     return {
-      // guest: {
-      //   name: "Ulf Vanselius",
-      //   company: "Pyramid communication",
-      //   phoneNumber: "0733-903525",
-      //   colleague: ""
-      // },
       guest: {
         name: "",
         company: "",
@@ -187,39 +183,18 @@ export default {
     };
   },
   methods: {
-    //v-bind:class="{ textPositive: validated }"
-    // validateInput(val) {
-    //     // console.log(val.length);
-    //     return new Promise((resolve, reject) => {
-    //     setTimeout(() => {
-    //     // call
-    //     //  resolve(true)
-    //     //     --> content is valid
-    //     //  resolve(false)
-    //     //     --> content is NOT valid, no error message
-    //     //  resolve(error_message)
-    //     //     --> content is NOT valid, we have error message
-    //     resolve(val.length > 1)
-
-    //     // calling reject(...) will also mark the input
-    //     // as having an error, but there will not be any
-    //     // error message displayed below the input
-    //     // (only in browser console)
-    //     }, 500)
-    // })
-    //     },
-    val(e) {
-      console.log(this.$refs.name.hasError);
-      if (!this.$refs.name.hasError && e.length >= 5) {
-        console.log("inne if");
-        this.validated = true;
-        console.log(this.$refs.name.value);
-        console.log(e);
-      } else {
-        console.log("inne else");
-        this.validated = false;
-      }
-    },
+    // val(e) {
+    //   console.log(this.$refs.name.hasError);
+    //   if (!this.$refs.name.hasError && e.length >= 5) {
+    //     console.log("inne if");
+    //     this.validated = true;
+    //     console.log(this.$refs.name.value);
+    //     console.log(e);
+    //   } else {
+    //     console.log("inne else");
+    //     this.validated = false;
+    //   }
+    // },
     addSubmitButton() {
       if (this.guest.name && this.guest.company && this.guest.phoneNumber) {
         this.submitButton = true;
@@ -270,7 +245,14 @@ export default {
         this.guest.colleagues.push({ id: Math.random() * 1000, name: "" });
         // const testy = document.querySelector(".testy");
         // testy.style.transform = "translateY(81%)";
-        this.scrollToEnd();
+        setTimeout(() => {
+          console.log(this.$refs.scrollRef);
+          this.$refs.scrollRef.scrollIntoView({
+            behavior: "smooth",
+            block: "end",
+            inline: "nearest"
+          });
+        }, 100);
       } else {
         this.$refs.validateFormRef.validate();
       }
@@ -287,7 +269,7 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  padding: 4rem 10rem;
+  padding: 0rem 10rem;
 }
 
 .wrapper {
