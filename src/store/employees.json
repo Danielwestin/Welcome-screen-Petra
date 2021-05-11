@@ -1,0 +1,44 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "img": "",
+      "firstName": "Cristoffer",
+      "surname": "Crusell",
+      "phone": "010-3446666",
+      "description": "Hi! I’m the CEO of Petra, did you know I love barbecue and have an insanely smart home?"
+    },
+    {
+      "id": 2,
+      "img": "",
+      "firstName": "Jonas",
+      "surname": "Lönn",
+      "phone": "010-3446666",
+      "description": "Hi! I’m the CEO of Petra, did you know I love barbecue and have an insanely smart home?"
+    },
+    {
+      "id": 3,
+      "img": "",
+      "firstName": "Daniel",
+      "surname": "Westin",
+      "phone": "010-3446666",
+      "description": "Hi! I’m the CEO of Petra, did you know I love barbecue and have an insanely smart home?"
+    },
+    {
+      "id": 4,
+      "img": "",
+      "firstName": "Micke",
+      "surname": "Jönsson",
+      "phone": "010-3446666",
+      "description": "Hi! I’m the CEO of Petra, did you know I love barbecue and have an insanely smart home?"
+    },
+    {
+      "id": 5,
+      "img": "",
+      "firstName": "Emil",
+      "surname": "Bergström",
+      "phone": "010-3446666",
+      "description": "Hi! I’m the CEO of Petra, did you know I love barbecue and have an insanely smart home?Hi! I’m the CEO of Petra, did you know I love barbecue and have an insanely smart home?"
+    }
+  ]
+}
