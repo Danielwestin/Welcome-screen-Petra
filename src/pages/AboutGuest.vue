@@ -213,7 +213,6 @@ export default {
     },
 
     show(e) {
-      console.log(e);
       this.input = e.target;
       this.layout = e.target.dataset.layout;
 
