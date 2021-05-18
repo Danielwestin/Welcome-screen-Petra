@@ -29,7 +29,7 @@
               flat
               class="q-px-none q-mx-none"
               to="/third-page"
-              v-on:click="StopPropagation"
+              v-on:click="chosenOne"
               size="1.5rem"
               align="right"
               color="green"
@@ -59,7 +59,7 @@ export default {
     return { mutatedEmployeeDetails: this.employeeDetails };
   },
   methods: {
-    StopPropagation(e) {
+    chosenOne(e) {
       console.log(this.employeeDetails);
       e.stopPropagation();
     },

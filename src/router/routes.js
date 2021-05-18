@@ -15,6 +15,10 @@ const routes = [
       {
         path: "/forth-page",
         component: () => import("pages/ExtraGuestInfo.vue")
+      },
+      {
+        path: "/fifth-page",
+        component: () => import("pages/ParkingPage.vue")
       }
     ]
   },

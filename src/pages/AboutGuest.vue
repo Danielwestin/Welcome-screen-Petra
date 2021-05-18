@@ -3,21 +3,20 @@
     <q-item class="page3background">
       <div
         class="fixed-top"
-        style="z-index: 100; height: 15%; background: linear-gradient(to bottom, rgba(13,22,54, 1) 0%, rgba(0, 0, 0, 0) 100%);
-
-"
+        style="z-index: 100; height: 10%; background: linear-gradient(to bottom, rgba(13,22,54, 1) 0%, rgba(0, 0, 0, 0) 100%);"
       />
       <div
         class="q-gutter-md wrapper"
         style=" padding-top: 4rem; backgroundColor: transparent; height: 90%; overflow-y: auto; "
       >
-        <h2 class="text-h2 text-primary header-text">
+        <h2 class="text-h2 text-primary q-mb-none ">
           Please, tell us a little about yourself.
         </h2>
 
         <q-form ref="validateFormRef" @submit.prevent="onSubmit">
           <q-input
-            autofocus
+            @focus="show"
+            data-layout="normal"
             ref="name"
             @input="addSubmitButton"
             class="search-input"
@@ -37,10 +36,11 @@
             </template>
           </q-input>
 
-          <!---OLDEST CODE --->
           <div class="row q-mt-none" style="backgroundColor: none;">
             <div class="col ">
               <q-input
+                @focus="show"
+                data-layout="normal"
                 @input="addSubmitButton"
                 class="search-input"
                 outlined
@@ -60,6 +60,8 @@
             </div>
             <div class="col q-pl-md">
               <q-input
+                @focus="show"
+                data-layout="numeric"
                 @input="addSubmitButton"
                 class="search-input"
                 outlined
@@ -90,6 +92,8 @@
                     v-bind:key="colleague.id"
                   >
                     <q-input
+                      @focus="show"
+                      data-layout="normal"
                       @input="addColleagueButton"
                       :key="colleague.id"
                       class="search-input"
@@ -162,13 +166,26 @@
         </q-form>
       </div>
     </q-item>
+    <vue-touch-keyboard
+      id="keyboard"
+      :options="options"
+      v-if="visible"
+      :layout="layout"
+      :cancel="hide"
+      :accept="accept"
+      :input="input"
+      :next="next"
+    />
   </q-layout>
 </template>
 
 <script>
-import { scroll } from "quasar";
-const { getScrollTarget, setScrollPosition } = scroll;
+import VueTouchKeyboard from "vue-touch-keyboard";
+
 export default {
+  components: {
+    "vue-touch-keyboard": VueTouchKeyboard.component
+  },
   data() {
     return {
       guest: {
@@ -179,22 +196,51 @@ export default {
       },
       submitButton: false,
       addInputButton: false,
-      validated: false
+      validated: false,
+      visible: false,
+      layout: "normal",
+      input: null,
+      options: {
+        useKbEvents: false,
+        preventClickEvent: false
+      }
     };
   },
   methods: {
-    // val(e) {
-    //   console.log(this.$refs.name.hasError);
-    //   if (!this.$refs.name.hasError && e.length >= 5) {
-    //     console.log("inne if");
-    //     this.validated = true;
-    //     console.log(this.$refs.name.value);
-    //     console.log(e);
-    //   } else {
-    //     console.log("inne else");
-    //     this.validated = false;
-    //   }
-    // },
+    accept(text) {
+      console.log("Input text: " + text);
+      this.hide();
+    },
+
+    show(e) {
+      console.log(e);
+      this.input = e.target;
+      this.layout = e.target.dataset.layout;
+
+      if (!this.visible) this.visible = true;
+    },
+
+    hide() {
+      this.visible = false;
+    },
+
+    next(e) {
+      let inputs = document.querySelectorAll("input");
+
+      let found = false;
+      [].forEach.call(inputs, (item, i) => {
+        if (!found && item == this.input && i < inputs.length - 1) {
+          found = true;
+          this.$nextTick(() => {
+            inputs[i + 1].focus();
+          });
+        }
+      });
+      if (!found) {
+        this.input.blur();
+        this.hide();
+      }
+    },
     addSubmitButton() {
       if (this.guest.name && this.guest.company && this.guest.phoneNumber) {
         this.submitButton = true;
@@ -202,13 +248,7 @@ export default {
         this.submitButton = false;
       }
     },
-    onSubmit(e) {
-      this.$refs.validateFormRef.validate().then(() => {
-        console.log("success");
-        console.log(this.guest);
-        this.$router.push("/forth-page");
-      });
-    },
+
     addColleagueButton() {
       if (
         this.guest.name &&
@@ -221,20 +261,6 @@ export default {
         this.addInputButton = false;
       }
     },
-
-    handleScroll(msg) {
-      const ele = document.getElementById("scrollRef"); // You need to get your element here
-      const target = getScrollTarget(ele);
-      const offset = ele.offsetTop;
-      const duration = 1000;
-      setScrollPosition(target, offset, duration);
-      console.log(ele, target, offset);
-    },
-    scrollToEnd: function() {
-      var container = this.$el.querySelector("#container");
-      container.scrollTop = container.scrollHeight;
-    },
-
     addColleagueInput() {
       if (
         this.guest.name &&
@@ -243,10 +269,8 @@ export default {
         this.guest.colleagues[0].name
       ) {
         this.guest.colleagues.push({ id: Math.random() * 1000, name: "" });
-        // const testy = document.querySelector(".testy");
-        // testy.style.transform = "translateY(81%)";
+
         setTimeout(() => {
-          console.log(this.$refs.scrollRef);
           this.$refs.scrollRef.scrollIntoView({
             behavior: "smooth",
             block: "end",
@@ -256,6 +280,13 @@ export default {
       } else {
         this.$refs.validateFormRef.validate();
       }
+    },
+    onSubmit(e) {
+      this.$refs.validateFormRef.validate().then(() => {
+        console.log("success");
+        console.log(this.guest);
+        this.$router.push("/forth-page");
+      });
     }
   }
 };
