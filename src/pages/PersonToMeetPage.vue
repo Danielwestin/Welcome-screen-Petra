@@ -1,10 +1,10 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-item class="page2background q-px-xl">
+    <q-item class="page2 background q-px-xl">
       <div class="q-gutter-md wrapper">
         <h2
           v-on:click="employeeDetails = false"
-          class="text-h2 text-primary header-text q-pt-none"
+          class="title-size text-primary header-text q-pt-none title-font"
         >
           Who are you here to see?
         </h2>
@@ -13,7 +13,7 @@
           data-layout="normal"
           autofocus
           v-show="!employeeDetails"
-          class="search-input"
+          class="search-input text-font"
           outlined
           square
           v-model="searchedEmpolyee"
@@ -33,7 +33,7 @@
             v-bind:key="employee.id"> </ListView> -->
         <div class="employeesWrapper">
           <span
-            v-if="searchedEmpolyee"
+            v-if="addScrollFade"
             class="employeesWrapper__gradient employeesWrapper__gradient--top"
           />
           <div
@@ -51,7 +51,7 @@
                     <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
                   </q-avatar>
                 </q-item-section>
-                <q-item-section class="text-secondary text-h4"
+                <q-item-section class="text-secondary text-h4 title-font"
                   >{{ empolyee.firstName }}
                   {{ empolyee.surname }}</q-item-section
                 >
@@ -59,7 +59,7 @@
             </div>
           </div>
           <span
-            v-if="searchedEmpolyee"
+            v-if="addScrollFade"
             class="employeesWrapper__gradient employeesWrapper__gradient--bottom"
           />
         </div>
@@ -113,6 +113,13 @@ export default {
           }
         }
       });
+    },
+    addScrollFade() {
+      if (this.employeeDetails !== false) {
+        return false;
+      } else {
+        return true;
+      }
     }
   },
   components: {
@@ -160,13 +167,8 @@ export default {
 </script>
 
 <style lang="scss">
-.page2background {
-  height: 100vh;
-  width: 100vw;
+.page2 {
   background-image: url("../assets/page2/page2Background.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
   padding: 4rem 10rem;
 }
 
@@ -211,7 +213,7 @@ export default {
 }
 
 .header-text {
-  margin-bottom: 0;
+  margin-bottom: 2rem;
 }
 
 .search-input * {
@@ -219,13 +221,13 @@ export default {
   font-size: 1.4rem;
 }
 
-.q-field--float .q-field__label {
-  font-size: 1rem;
-}
+// .q-field--float .q-field__label {
+//   font-size: 1rem;
+// }
 
-.q-field--outlined .q-field__control:before {
-  border: 1px solid rgba(255, 255, 255, 0.5);
-}
+// .q-field--outlined .q-field__control:before {
+//   border: 1px solid rgba(255, 255, 255, 0.5);
+// }
 
 .avatar-img-wrapper div {
   border: solid 2px white;

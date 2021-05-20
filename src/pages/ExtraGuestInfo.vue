@@ -1,22 +1,25 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-item class="page4background">
-      <div class="q-gutter-md" style="backgroundColor: transparent;">
+    <q-item class="page4 background">
+      <div
+        class="q-gutter-md"
+        style="backgroundColor: transparent; height: 78%;"
+      >
         <h2
-          class="text-primary text-h2 q-pb-lg"
-          style=" backgroundColor: transparent;"
+          class="text-primary title-size q-pb-sm title-font"
+          style="margin-bottom: 2rem; backgroundColor: transparent;"
         >
           Anything else we should know about?
         </h2>
         <p
-          class="text-secondary text-h4 q-pb-sm"
-          style="width: 50%; backgroundColor: transparent;"
+          class="text-secondary bread-size q-pb-sm input-font"
+          style="width: 55%; backgroundColor: transparent;"
         >
           We don’t mean to pry, but do you suffer from any allergies or anything
           else Cristoffer or our receptionist should know about?
         </p>
         <div
-          class="q-mt-xl flex justify-between items-end"
+          class="q-mt-lg flex justify-between items-end"
           style="max-width: 90%; backgroundColor: transparent; "
         >
           <q-input
@@ -27,7 +30,7 @@
             v-model="textfield"
             type="textarea"
             placeholder="Please let us know"
-            class="textfield-input"
+            class="textfield-input text-font"
             style="width: 50%; height: 100%; border: solid 1px white;"
           />
 
@@ -38,7 +41,7 @@
             color="green"
             flat
             size="xl"
-            class="carryOnButton"
+            class="carryOnButton text-font"
             icon-right="arrow_forward"
           />
         </div>
@@ -116,13 +119,8 @@ export default {
 </script>
 
 <style lang="scss">
-.page4background {
-  height: 100vh;
-  width: 100vw;
+.page4 {
   background-image: url("../assets/page4/page4Background.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
   padding: 4rem 10rem;
 }
 

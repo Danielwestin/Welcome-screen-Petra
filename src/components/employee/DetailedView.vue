@@ -10,16 +10,20 @@
         <div
           style="display: flex; flex-direction: column; height: 100%; justify-content: flex-end"
         >
-          <div class="text-secondary text-h3">
+          <div class="text-secondary text-h3 title-font">
             {{ this.employeeDetails.firstName }}
             {{ this.employeeDetails.surname }}
           </div>
-          <div class="text-secondary text-h6 text-weight-regular q-pt-sm">
+          <div
+            class="text-secondary text-h6 text-weight-regular q-pt-sm text-font"
+          >
             <q-icon name="phone" />
             {{ this.employeeDetails.phone }}
           </div>
 
-          <div class="text-secondary text-h5 text-weight-light q-pt-sm">
+          <div
+            class="text-secondary text-h5 text-weight-light q-pt-sm input-font"
+          >
             {{ this.employeeDetails.description }}
           </div>
           <div
@@ -27,7 +31,7 @@
           >
             <q-btn
               flat
-              class="q-px-none q-mx-none"
+              class="q-px-none q-mx-none text-font"
               to="/third-page"
               v-on:click="chosenOne"
               size="1.5rem"
@@ -39,7 +43,7 @@
             </q-btn>
             <q-btn
               flat
-              class="q-px-none q-mx-none"
+              class="q-px-none q-mx-none text-font"
               @click="CloseDetailedView"
               size="1.5rem"
               color="red"
@@ -71,10 +75,6 @@ export default {
 };
 </script>
 <style lang="scss">
-.q-btn__wrapper {
-  padding: 0;
-}
-
 // .btn-no-padding {
 //   padding: 0;
 // }

@@ -10,7 +10,7 @@ const routes = [
       },
       {
         path: "/third-page",
-        component: () => import("pages/AboutGuest.vue")
+        component: () => import("pages/GuestInfo.vue")
       },
       {
         path: "/forth-page",
@@ -19,6 +19,10 @@ const routes = [
       {
         path: "/fifth-page",
         component: () => import("pages/ParkingPage.vue")
+      },
+      {
+        path: "/sixth-page",
+        component: () => import("pages/ParkingReminderPage.vue")
       }
     ]
   },

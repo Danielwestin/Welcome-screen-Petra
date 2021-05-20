@@ -1,16 +1,19 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-item class="page3background">
+    <q-item class="page3 background">
       <div
         class="fixed-top"
-        style="z-index: 100; height: 10%; background: linear-gradient(to bottom, rgba(13,22,54, 1) 0%, rgba(0, 0, 0, 0) 100%);"
+        style="z-index: 100; height: 8%; background: linear-gradient(to bottom, rgba(13,22,54, 1) 0%, rgba(0, 0, 0, 0) 100%);"
       />
       <div
         class="q-gutter-md wrapper"
-        style=" padding-top: 4rem; backgroundColor: transparent; height: 90%; overflow-y: auto; "
+        style=" padding-top: 4rem; backgroundColor: transparent; height: 70%; overflow-y: auto; "
       >
-        <h2 class="text-h2 text-primary q-mb-none ">
-          Please, tell us a little about yourself.
+        <h2
+          class="title-size text-primary q-mb-none title-font"
+          style="margin-bottom: 2rem;"
+        >
+          Please, tell us a little about yourself
         </h2>
 
         <q-form ref="validateFormRef" @submit.prevent="onSubmit">
@@ -19,7 +22,7 @@
             data-layout="normal"
             ref="name"
             @input="addSubmitButton"
-            class="search-input"
+            class="search-input text-font"
             outlined
             square
             v-model="guest.name"
@@ -42,7 +45,7 @@
                 @focus="show"
                 data-layout="normal"
                 @input="addSubmitButton"
-                class="search-input"
+                class="search-input text-font"
                 outlined
                 square
                 v-model="guest.company"
@@ -63,7 +66,7 @@
                 @focus="show"
                 data-layout="numeric"
                 @input="addSubmitButton"
-                class="search-input"
+                class="search-input text-font"
                 outlined
                 square
                 v-model="guest.phoneNumber"
@@ -82,7 +85,7 @@
             </div>
           </div>
           <div class="row" style="backgroundColor: none;">
-            <div class="col text-secondary ">
+            <div class="col text-secondary title-font text-body1">
               Did you bring a colleague?
               <div class="row q-mt-xs">
                 <transition-group name="fade" tag="div" class="col-12">
@@ -96,7 +99,7 @@
                       data-layout="normal"
                       @input="addColleagueButton"
                       :key="colleague.id"
-                      class="search-input"
+                      class="search-input text-font"
                       outlined
                       square
                       v-model="colleague.name"
@@ -125,9 +128,10 @@
                 >
                   <div
                     v-show="addInputButton"
-                    class="col-12 q-mb-xs text-secondary"
+                    class="col-12 q-mb-xs text-secondary title-font text-body1
+"
                   >
-                    Add colleague.
+                    Add colleague
                   </div>
                   <div class="col-12 flex align-end justify-between ">
                     <span
@@ -154,7 +158,7 @@
                         color="green"
                         flat
                         size="lg"
-                        class="q-ml-sm"
+                        class="q-ml-sm text-font"
                         icon-right="arrow_forward"
                       />
                     </transition>
@@ -292,18 +296,12 @@ export default {
 </script>
 
 <style lang="scss">
-.page3background {
-  height: 100vh;
-  width: 100vw;
+.page3 {
   background-image: url("../assets/page3/page3Background.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
   padding: 0rem 10rem;
 }
 
 .wrapper {
-  // background-color: red;
   width: 100%;
 }
 
@@ -314,51 +312,5 @@ export default {
 .search-input * {
   color: white;
   font-size: 1.4rem;
-}
-
-.fade-enter,
-.fade-leave-to {
-  visibility: hidden;
-  opacity: 0;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 0.5s;
-}
-
-.glide-enter,
-.glide-leave-to {
-  visibility: hidden;
-  opacity: 0;
-}
-
-.glide-enter-active,
-.glide-leave-active {
-  transition: all 0.5s;
-}
-
-.q-field--float .q-field__label {
-  font-size: 1rem;
-}
-
-.q-field--outlined .q-field__control:before {
-  border: 1px solid rgba(255, 255, 255, 0.5);
-}
-
-.textPositive {
-  .q-field__inner {
-    border: solid 1px green;
-  }
-
-  .q-field__control {
-    border: solid 2px green;
-    // color: green;
-  }
-
-  .q-field__control:before {
-    // border: solid 1px green;
-    // color: green;
-  }
 }
 </style>

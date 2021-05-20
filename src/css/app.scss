@@ -1,4 +1,37 @@
-// app global css in SCSS form
+// FONTS
+@import url(./_fonts.scss);
+
+.title-font {
+  font-family: "Avenir Next LT W01 Bold";
+}
+
+.text-font {
+  font-family: "Avenir Next LT W01 Demi";
+}
+
+.input-font {
+  font-family: "AvenirNextLTW01-Regular";
+}
+
+//--------OVERALL FONT SIZES-------------//
+.title-size {
+  font-size: 80px;
+}
+
+.bread-size {
+  font-size: 40px;
+}
+
+//---------OVERALL BACKGROUND STANDARD----------//
+.background {
+  height: 100vh;
+  width: 100vw;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+//-----------GLOBAL CSS FOR VUE-TOUCH-KEYBOARD----------------//
 
 #keyboard {
   position: fixed;
@@ -13,6 +46,7 @@
   background-color: transparent;
   box-shadow: 0px -3px 10px rgba(black, 0.3);
   border-radius: 10px;
+  font-family: "AvenirNextLTW01-Regular";
 }
 
 /**
@@ -54,10 +88,10 @@
 }
 .vue-touch-keyboard .keyboard .key.backspace {
   background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4IiB3aWR0aD0iNDgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTAgMGg0OHY0OGgtNDh6IiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTQ0IDZoLTMwYy0xLjM4IDAtMi40Ny43LTMuMTkgMS43NmwtMTAuODEgMTYuMjMgMTAuODEgMTYuMjNjLjcyIDEuMDYgMS44MSAxLjc4IDMuMTkgMS43OGgzMGMyLjIxIDAgNC0xLjc5IDQtNHYtMjhjMC0yLjIxLTEuNzktNC00LTR6bS02IDI1LjE3bC0yLjgzIDIuODMtNy4xNy03LjE3LTcuMTcgNy4xNy0yLjgzLTIuODMgNy4xNy03LjE3LTcuMTctNy4xNyAyLjgzLTIuODMgNy4xNyA3LjE3IDcuMTctNy4xNyAyLjgzIDIuODMtNy4xNyA3LjE3IDcuMTcgNy4xN3oiIGZpbGw9IndoaXRlIi8+PC9zdmc+);
-  filter: invert(100%);
+  // filter: invert(100%);
   background-position: 50%;
   background-repeat: no-repeat;
-  background-size: 35%;
+  background-size: 30%;
 }
 .vue-touch-keyboard .keyboard .key.half {
   flex: 20;
@@ -65,7 +99,7 @@
 .vue-touch-keyboard .keyboard .key.control {
   color: rgb(255, 255, 255);
   background-color: #000000;
-  border-color: #cfcfcf;
+  border-color: #000000;
 }
 .vue-touch-keyboard .keyboard .key.featured {
   color: #fff;
@@ -103,4 +137,61 @@
 }
 .vue-touch-keyboard .keyboard:after {
   clear: both;
+}
+
+//--------ANIMATION------------//
+
+.fade-enter,
+.fade-leave-to {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.5s;
+}
+
+.glide-enter,
+.glide-leave-to {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.glide-enter-active,
+.glide-leave-active {
+  transition: all 0.5s;
+}
+
+//-----CUSTOMIZING QUASAR ELEMENTS-----------//
+
+.q-field--float .q-field__label {
+  font-size: 1rem;
+}
+
+.q-field--outlined .q-field__control:before {
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+// .q-field--float .q-field__label {
+//   font-size: 1rem;
+// }
+
+//------BUTTON-------//
+.q-btn__wrapper {
+  padding: 0;
+}
+
+//-----CHECKBOX------//
+.q-checkbox__bg {
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.q-checkbox__inner--truthy .q-checkbox__bg,
+.q-checkbox__inner--indet .q-checkbox__bg {
+  background: transparent;
+}
+
+.q-checkbox__svg {
+  color: $green;
 }
