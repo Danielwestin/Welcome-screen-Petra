@@ -9,7 +9,7 @@
           class="text-primary title-size q-pb-sm title-font"
           style="margin-bottom: 2rem; backgroundColor: transparent;"
         >
-          We will remind you at -
+          We will remind you at {{ t }}
         </h2>
         <p
           class="text-secondary bread-size q-pb-sm input-font"
@@ -39,7 +39,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    t() {
+      return this.$store.getters["parkingTime"];
+    }
+  }
+};
 </script>
 
 <style lang="scss">

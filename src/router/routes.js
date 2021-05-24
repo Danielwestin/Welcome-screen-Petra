@@ -23,6 +23,14 @@ const routes = [
       {
         path: "/sixth-page",
         component: () => import("pages/ParkingReminderPage.vue")
+      },
+      {
+        path: "/seventh-page",
+        component: () => import("pages/BorrowKeyPage.vue")
+      },
+      {
+        path: "/eighths-page",
+        component: () => import("pages/FloorPlanPage.vue")
       }
     ]
   },

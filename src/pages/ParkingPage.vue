@@ -31,7 +31,7 @@
                 name="checkbox1"
                 ref="checkbox1Ref"
                 size="112px"
-                v-model="options.checkbox1.state"
+                :value="this.parkingState.checkbox1.state"
               />
             </div>
           </div>
@@ -51,10 +51,11 @@
                 square
                 outlined
                 mask="time"
-                v-model="options.time.state"
+                label="--:--"
+                :value="this.parkingState.time.state"
                 class="time-input text-font bread-size"
                 @input="
-                  v => {
+                  (v, d) => {
                     change('time', v);
                   }
                 "
@@ -71,14 +72,14 @@
                     >
                       <q-time
                         @input="
-                          v => {
+                          (v, d) => {
                             change('time', v);
                           }
                         "
                         dark
                         format24h
-                        class="time-input"
-                        v-model="options.time.state"
+                        class="time-input text-font"
+                        :value="parkingState.time.state"
                       >
                         <div class="row items-center justify-end ">
                           <q-btn
@@ -114,7 +115,7 @@
                 name="checkbox2"
                 ref="checkbox2Ref"
                 size="112px"
-                v-model="options.checkbox2.state"
+                :value="this.parkingState.checkbox2.state"
               />
             </div>
           </div>
@@ -145,6 +146,12 @@
 </template>
 
 <script>
+// @input=" (v, d) => {change('checkbox1', v, d);}"
+// @input="(v, d) => {change('time', v, d);}"
+// @input=" (v, d) => {change('checkbox2', v, d);}"
+
+import { mapActions } from "vuex";
+import store from "../store/store-parkingPage";
 export default {
   data() {
     return {
@@ -156,6 +163,7 @@ export default {
         },
         time: {
           state: "",
+          details: {},
           to: "/sixth-page"
         },
         checkbox2: {
@@ -165,18 +173,26 @@ export default {
       }
     };
   },
+  computed: {
+    parkingState() {
+      return this.$store.getters["parkingState"];
+    }
+  },
   methods: {
+    // ...mapActions("parkingState", ["updateParkingTime"]),
     onSubmit(evt) {
       const formData = new FormData(evt.target);
       const submitResult = [];
 
-      for (const [name, value, path] of formData.entries()) {
+      for (const [name, value] of formData.entries()) {
         if (value) {
           // submitResult.push({
           //   name,
           //   value,
           //   path
           // });
+          // console.log(this.options.time.details.year);
+          // console.log(name, value);
           console.log(name, value);
           this.$router.push(this.options[name].to);
         }
@@ -184,21 +200,37 @@ export default {
       // this.$router.push(this.options[submitResult[0].name].to);
       // this.submitResult = submitResult;
     },
-    change(name, value) {
-      console.log("hej");
-      Object.keys(this.options).forEach(key => {
+    change(name, value, d) {
+      console.log(value);
+      // console.log(this.parkingState.time.state);
+      // this.$store.commit(name, { name, value });
+      // updateParkingTime({ name: "time", value: v });
+
+      // Object.keys(this.options).forEach(key => {
+      //   if (key === name) {
+      //     this.options[key].state = value;
+      //     this.showContinue = value;
+      //   } else {
+      //     this.options[key].state = false;
+      //     if (key === "time") {
+      //       this.options.time.state = "";
+      //     }
+      //   }
+      // console.log("time statet", this.options.time.state);
+
+      // this.options[key] = name === key ? value : false;
+      // });
+      //---------NAME ÄR DEN MAN KLICKAR PÅ-----------
+      Object.keys(this.parkingState).forEach(key => {
         if (key === name) {
-          this.options[key].state = value;
+          this.$store.commit(key, { name: key, value });
           this.showContinue = value;
         } else {
-          this.options[key].state = false;
+          this.$store.commit(key, { name: key, value: false });
           if (key === "time") {
-            this.options.time.state = "";
+            this.$store.commit("time", { name: key, value: {} });
           }
         }
-        console.log("time statet", this.options.time.state);
-
-        // this.options[key] = name === key ? value : false;
       });
     }
   }
