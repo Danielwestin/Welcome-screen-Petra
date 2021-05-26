@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-page-container>
-      <q-item to="/second-page" exact clickable class="page1">
+      <q-item to="/second-page" exact clickable class="page1 background">
         <q-img
           src="../assets/page1/petraLogo.png"
           style=" 
@@ -27,11 +27,6 @@ export default {};
 
 <style scoped>
 .page1 {
-  height: 100vh;
-  width: 100vw;
-  background-image: url("../assets/page1/page1Background.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  background-image: url("../assets/page1/page1Background.jpg");
 }
 </style>

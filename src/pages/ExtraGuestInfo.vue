@@ -1,29 +1,26 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-item class="page4 background">
-      <div
-        class="q-gutter-md"
-        style="backgroundColor: transparent; height: 78%;"
-      >
+      <div @click="hide" class="q-gutter-md" style="height: 78%;">
         <h2
           class="text-primary title-size q-pb-sm title-font"
-          style="margin-bottom: 2rem; backgroundColor: transparent;"
+          style="margin-bottom: 2rem;"
         >
           Anything else we should know about?
         </h2>
         <p
           class="text-secondary bread-size q-pb-sm input-font"
-          style="width: 55%; backgroundColor: transparent;"
+          style="width: 55%;"
         >
           We don’t mean to pry, but do you suffer from any allergies or anything
           else Cristoffer or our receptionist should know about?
         </p>
         <div
           class="q-mt-lg flex justify-between items-end"
-          style="max-width: 90%; backgroundColor: transparent; "
+          style="max-width: 90%;"
         >
           <q-input
-            @focus="show"
+            @click.stop="show"
             data-layout="normal"
             text-color="white"
             outlined
@@ -41,7 +38,7 @@
             color="green"
             flat
             size="xl"
-            class="carryOnButton text-font"
+            class="text-font"
             icon-right="arrow_forward"
           />
         </div>
@@ -120,7 +117,7 @@ export default {
 
 <style lang="scss">
 .page4 {
-  background-image: url("../assets/page4/page4Background.png");
+  background-image: url("../assets/page4/page4Background.jpg");
   padding: 4rem 10rem;
 }
 
@@ -128,11 +125,5 @@ export default {
   color: white;
   font-size: 1.4rem;
   height: 290px;
-}
-
-.carryOnButton {
-  // position: absolute;
-  // top: 647px;
-  // left: 1443px;
 }
 </style>

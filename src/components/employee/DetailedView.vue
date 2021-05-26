@@ -1,8 +1,12 @@
 <template>
-  <div v-show="employeeDetails" class="q-pt-md" style="width: 75%;">
-    <q-item clickable v-ripple>
+  <div
+    v-show="employeeDetails"
+    class="q-pt-md"
+    style="width: 79%; height: 442px;"
+  >
+    <q-item clickable v-ripple style="height: 90%;">
       <q-item-section avatar>
-        <q-avatar size="18rem" class="avatar-img-wrapper">
+        <q-avatar size="23rem" class="avatar-img-wrapper">
           <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
         </q-avatar>
       </q-item-section>
@@ -14,16 +18,12 @@
             {{ this.employeeDetails.firstName }}
             {{ this.employeeDetails.surname }}
           </div>
-          <div
-            class="text-secondary text-h6 text-weight-regular q-pt-sm text-font"
-          >
+          <div class="text-secondary text-font small-size  q-pt-sm">
             <q-icon name="phone" />
             {{ this.employeeDetails.phone }}
           </div>
 
-          <div
-            class="text-secondary text-h5 text-weight-light q-pt-sm input-font"
-          >
+          <div class="text-secondary bread-size q-pt-sm input-font">
             {{ this.employeeDetails.description }}
           </div>
           <div
@@ -31,10 +31,9 @@
           >
             <q-btn
               flat
-              class="q-px-none q-mx-none text-font"
+              class="q-px-none q-mx-none text-font small-size"
               to="/third-page"
               v-on:click="chosenOne"
-              size="1.5rem"
               align="right"
               color="green"
               label="This is the right one!"
@@ -43,9 +42,8 @@
             </q-btn>
             <q-btn
               flat
-              class="q-px-none q-mx-none text-font"
+              class="q-px-none q-mx-none text-font small-size"
               @click="CloseDetailedView"
-              size="1.5rem"
               color="red"
               label="No, try again"
             />
@@ -58,7 +56,10 @@
 
 <script>
 export default {
-  props: ["employeeDetails"],
+  props: ["employeeDetails", "hide"],
+  created() {
+    this.hide();
+  },
   data: function() {
     return { mutatedEmployeeDetails: this.employeeDetails };
   },

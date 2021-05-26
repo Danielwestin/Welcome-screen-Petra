@@ -50,7 +50,7 @@ export default {
 
 <style lang="scss">
 .page6 {
-  background-image: url("../assets/page6/page6Background.png");
+  background-image: url("../assets/page6/page6Background.jpg");
 
   padding: 4rem 10rem;
 }

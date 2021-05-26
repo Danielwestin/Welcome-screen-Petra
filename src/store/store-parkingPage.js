@@ -13,23 +13,16 @@ const state = {
     to: "/seventh-page"
   }
 };
+const initialState = state;
 
 const mutations = {
-  //   updateParkingTime(state, { name, value }) {
-  //     state[name].state = value;
-  //     // Object.assigns(state[name].state, value);
-  //   },
-  checkbox1(state, { name, value }) {
-    // console.log("checkbox1", name, value);
+  checkbox1(state, { name, value, d }) {
     state[name].state = value;
   },
-  time(state, { name, value }) {
-    console.log("in store", name, value);
+  time(state, { name, value, d }) {
     state[name].state = value;
-    // state[payload.name].details = payload.details;
   },
-  checkbox2(state, { name, value }) {
-    // console.log("checkbox2", name, value);
+  checkbox2(state, { name, value, d }) {
     state[name].state = value;
   }
 };

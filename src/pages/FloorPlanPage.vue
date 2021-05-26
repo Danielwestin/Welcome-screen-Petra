@@ -36,7 +36,7 @@ export default {};
 
 <style lang="scss">
 .page8 {
-  background-image: url("../assets/page8/page8Background.png");
+  background-image: url("../assets/page8/page8Background.jpg");
   padding: 4rem 10rem;
 }
 

@@ -56,7 +56,7 @@
                 class="time-input text-font bread-size"
                 @input="
                   (v, d) => {
-                    change('time', v);
+                    change('time', v, d);
                   }
                 "
               >
@@ -73,7 +73,7 @@
                       <q-time
                         @input="
                           (v, d) => {
-                            change('time', v);
+                            change('time', v, d);
                           }
                         "
                         dark
@@ -124,7 +124,7 @@
             style="backgroundColor: transparent;  "
           >
             <div
-              style=" padding-left: 28px; backgroundColor: transparent; height: 100%; width: 13%;"
+              style="padding-left: 23px; backgroundColor: transparent; height: 100%; width: 13%;"
             >
               <transition name="fade">
                 <q-btn
@@ -133,7 +133,7 @@
                   label="Continue"
                   type="submit"
                   color="green"
-                  size="lg"
+                  size="xl"
                   class="text-font"
                   icon-right="arrow_forward"
                 />
@@ -178,6 +178,14 @@ export default {
       return this.$store.getters["parkingState"];
     }
   },
+  mounted() {
+    return Object.keys(this.parkingState).forEach(key => {
+      this.$store.commit(key, { name: key, value: false });
+      if (key === "time") {
+        this.$store.commit("time", { name: key, value: "" });
+      }
+    });
+  },
   methods: {
     // ...mapActions("parkingState", ["updateParkingTime"]),
     onSubmit(evt) {
@@ -193,7 +201,9 @@ export default {
           // });
           // console.log(this.options.time.details.year);
           // console.log(name, value);
+
           console.log(name, value);
+
           this.$router.push(this.options[name].to);
         }
       }
@@ -201,7 +211,6 @@ export default {
       // this.submitResult = submitResult;
     },
     change(name, value, d) {
-      console.log(value);
       // console.log(this.parkingState.time.state);
       // this.$store.commit(name, { name, value });
       // updateParkingTime({ name: "time", value: v });
@@ -228,7 +237,7 @@ export default {
         } else {
           this.$store.commit(key, { name: key, value: false });
           if (key === "time") {
-            this.$store.commit("time", { name: key, value: {} });
+            this.$store.commit("time", { name: key, value: "" });
           }
         }
       });
@@ -239,7 +248,7 @@ export default {
 
 <style lang="scss">
 .page5 {
-  background-image: url("../assets/page5/page5Background.png");
+  background-image: url("../assets/page5/page5Background.jpg");
   padding: 4rem 10rem;
 }
 

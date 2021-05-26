@@ -1,7 +1,7 @@
 <template>
   <q-layout view="lHh Lpr lFf">
     <q-item class="page2 background q-px-xl">
-      <div class="q-gutter-md wrapper">
+      <div class="q-gutter-md col">
         <h2
           v-on:click="employeeDetails = false"
           class="title-size text-primary header-text q-pt-none title-font"
@@ -22,6 +22,7 @@
 
         <DetailedView
           v-if="employeeDetails"
+          :hide="hide"
           :employeeDetails="employeeDetails"
           @closeDetailedView="employeeDetails = $event"
         />
@@ -47,11 +48,13 @@
                 v-on:click="employeeDetails = empolyee"
               >
                 <q-item-section avatar>
-                  <q-avatar size="6rem" class="avatar-img-wrapper">
+                  <q-avatar size="10rem" class="avatar-img-wrapper">
                     <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
                   </q-avatar>
                 </q-item-section>
-                <q-item-section class="text-secondary text-h4 title-font"
+                <q-item-section
+                  class="text-secondary title-font"
+                  style="font-size: 45px;"
                   >{{ empolyee.firstName }}
                   {{ empolyee.surname }}</q-item-section
                 >
@@ -123,10 +126,7 @@ export default {
     }
   },
   components: {
-    //  "ListView" : require("../components/employee/ListView.vue").default,
     DetailedView: require("../components/employee/DetailedView").default,
-    // VueTouchKeyboard: require("../components/vueTouchKeyboard").default
-    // Keyboard: require("../components/keyboard").default,
     "vue-touch-keyboard": VueTouchKeyboard.component
   },
   methods: {
@@ -168,20 +168,13 @@ export default {
 
 <style lang="scss">
 .page2 {
-  background-image: url("../assets/page2/page2Background.png");
+  background-image: url("../assets/page2/page2Background.jpg");
   padding: 4rem 10rem;
-}
-
-.wrapper {
-  //    background-color: red;
-  width: 100%;
 }
 
 .employeesWrapper {
   position: relative;
   height: 50%;
-  // overflow-y: auto;
-  // background-color: orange;
 
   &__gradient {
     pointer-events: none;
@@ -220,14 +213,6 @@ export default {
   color: white;
   font-size: 1.4rem;
 }
-
-// .q-field--float .q-field__label {
-//   font-size: 1rem;
-// }
-
-// .q-field--outlined .q-field__control:before {
-//   border: 1px solid rgba(255, 255, 255, 0.5);
-// }
 
 .avatar-img-wrapper div {
   border: solid 2px white;

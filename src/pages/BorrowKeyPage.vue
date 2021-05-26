@@ -76,7 +76,7 @@ export default {
 
 <style lang="scss">
 .page7 {
-  background-image: url("../assets/page7/page7Background.png");
+  background-image: url("../assets/page7/page7Background.jpg");
   padding: 4rem 10rem;
 }
 

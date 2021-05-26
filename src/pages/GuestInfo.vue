@@ -6,6 +6,7 @@
         style="z-index: 100; height: 8%; background: linear-gradient(to bottom, rgba(13,22,54, 1) 0%, rgba(0, 0, 0, 0) 100%);"
       />
       <div
+        @click="hide"
         class="q-gutter-md wrapper"
         style=" padding-top: 4rem; backgroundColor: transparent; height: 70%; overflow-y: auto; "
       >
@@ -18,7 +19,7 @@
 
         <q-form ref="validateFormRef" @submit.prevent="onSubmit">
           <q-input
-            @focus="show"
+            @click.stop="show"
             data-layout="normal"
             ref="name"
             @input="addSubmitButton"
@@ -42,7 +43,7 @@
           <div class="row q-mt-none" style="backgroundColor: none;">
             <div class="col ">
               <q-input
-                @focus="show"
+                @click.stop="show"
                 data-layout="normal"
                 @input="addSubmitButton"
                 class="search-input text-font"
@@ -63,7 +64,7 @@
             </div>
             <div class="col q-pl-md">
               <q-input
-                @focus="show"
+                @click.stop="show"
                 data-layout="numeric"
                 @input="addSubmitButton"
                 class="search-input text-font"
@@ -95,7 +96,7 @@
                     v-bind:key="colleague.id"
                   >
                     <q-input
-                      @focus="show"
+                      @click.stop="show"
                       data-layout="normal"
                       @input="addColleagueButton"
                       :key="colleague.id"
@@ -297,7 +298,7 @@ export default {
 
 <style lang="scss">
 .page3 {
-  background-image: url("../assets/page3/page3Background.png");
+  background-image: url("../assets/page3/page3Background.jpg");
   padding: 0rem 10rem;
 }
 
