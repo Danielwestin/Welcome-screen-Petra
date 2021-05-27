@@ -30,7 +30,7 @@ quasar build
 
 See [Configuring quasar.conf.js](https://v1.quasar.dev/quasar-cli/quasar-conf-js).
 
-### ADD Å Ä Ö TO VUE-TOUCH-KEYBOARD AND REMOVE DEFAULT STYLING
+### Add Å Ä Ö to VUE-TOUCH-KEYBOARD and remove default styling
 
 Enter the node-modules.
 Scroll down to vue-touch-keyboard. Open it.
