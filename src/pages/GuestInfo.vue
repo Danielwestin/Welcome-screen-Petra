@@ -124,24 +124,29 @@
             </div>
             <div
               class="col q-py-none q-my-none q-pl-md flex items-end"
-              style="background-color: none;"
+              style="background-color: transparent;"
             >
               <transition name="slide">
                 <div
                   class="row testy"
-                  style="margin-bottom: 48px; backgroundColor: transparent; width: 100%; height: 125px; "
+                  style="margin-bottom: 25px; backgroundColor: transparent; width: 100%; height: 150px; "
                 >
                   <div
                     style="backgroundColor: transparent; font-size: 30px"
-                    v-show="addInputButton"
+                    v-if="addInputButton"
                     class="col-12 text-secondary title-font q-mb-xs 
 "
                   >
                     Add colleague
                   </div>
+                  <div
+                    style="height: 45px; backgroundColor: transparent; font-size: 30px"
+                    v-else
+                    class="col-12 text-secondary title-font q-mb-xs"
+                  ></div>
                   <div class="col-12 flex align-end justify-between ">
                     <span
-                      style="height: 55px; width: 55px; background-color: transparent;"
+                      style="height: 100px; width: 100px; background-color: transparent;"
                       v-show="!addInputButton"
                     />
                     <transition name="fade">
@@ -291,8 +296,7 @@ export default {
     },
     onSubmit(e) {
       this.$refs.validateFormRef.validate().then(() => {
-        console.log("success");
-        console.log(this.guest);
+        console.log("success", this.guest);
         this.$router.push("/forth-page");
       });
     }

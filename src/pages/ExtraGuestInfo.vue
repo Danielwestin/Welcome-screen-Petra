@@ -37,8 +37,7 @@
             label="Carry on"
             color="green"
             flat
-            size="xl"
-            class="text-font"
+            class="text-font small-size"
             icon-right="arrow_forward"
           />
         </div>

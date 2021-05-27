@@ -12,7 +12,6 @@ const state = {
     to: "/seventh-page"
   }
 };
-const initialState = state;
 
 const mutations = {
   checkbox1(state, { name, value }) {
@@ -26,22 +25,7 @@ const mutations = {
   }
 };
 
-const actions = {
-  //   updateParkingTime({ commit }, payload) {
-  //     console.log(payload);
-  //     commit("updateParkingTime", payload);
-  //   },
-  //   time({ commit }, payload) {
-  //     console.log("hej");
-  //     // commit(payload.name, payload);
-  //   },
-  //   checkbox1({ commit }, payload) {
-  //     commit(payload.name, payload);
-  //   },
-  //   checkbox2({ commit }, payload) {
-  //     commit(payload.name, payload);
-  //   }
-};
+const actions = {};
 
 const getters = {
   parkingState: state => {

@@ -139,14 +139,10 @@
                 />
               </transition>
             </div>
-            <!-- <div style="backgroundColor: olive; height: 100%; width: 8%;">
-              hej
-            </div> -->
           </div>
         </q-form>
-      </div>
-    </q-item></q-layout
-  >
+      </div> </q-item
+  ></q-layout>
 </template>
 
 <script>
@@ -154,28 +150,13 @@
 // @input="(v, d) => {change('time', v, d);}"
 // @input=" (v, d) => {change('checkbox2', v, d);}"
 
-import { mapActions } from "vuex";
-import store from "../store/store-parkingPage";
+// import { mapActions } from "vuex";
+// import store from "../store/store-parkingPage";
 
 export default {
   data() {
     return {
       showContinue: false
-      // options1: {
-      //   checkbox1: {
-      //     state: false,
-      //     to: "/eighths-page"
-      //   },
-      //   time: {
-      //     state: "",
-      //     details: {},
-      //     to: "/sixth-page"
-      //   },
-      //   checkbox2: {
-      //     state: false,
-      //     to: "/seventh-page"
-      //   }
-      // },
     };
   },
 
@@ -193,63 +174,24 @@ export default {
     });
   },
   methods: {
-    // ...mapActions("parkingState", ["updateParkingTime"]),
     CheckNumber(n) {
       return (n < 10 ? "0" : "") + n;
     },
-    onSubmit(evt) {
+    onSubmit() {
       Object.keys(this.parkingState).forEach(key => {
         if (this.parkingState[key].state) {
+          console.log("picked choice:", key, this.parkingState[key]);
           this.$router.push(this.parkingState[key].to);
         }
       });
-      // const formData = new FormData(evt.target);
-      // const submitResult = [];
-      // console.log(...formData, "FORMDATA");
-      // for (const [name, value] of formData.entries()) {
-      //   if (value) {
-      // submitResult.push({
-      //   name,
-      //   value,
-      //   path
-      // });
-      // console.log(name, value);
-      // this.$router.push(this.parkingState[name].to);
-      // }
-      // this.$router.push(this.options[submitResult[0].name].to);
-      // this.submitResult = submitResult;
-      // }
     },
-    change(name, value, d) {
-      console.log(name, value);
-      // console.log(this.parkingState.time.state);
-      // this.$store.commit(name, { name, value });
-      // updateParkingTime({ name: "time", value: v });
-
-      // Object.keys(this.options).forEach(key => {
-      //   if (key === name) {
-      //     this.options[key].state = value;
-      //     this.showContinue = value;
-      //   } else {
-      //     this.options[key].state = false;
-      //     if (key === "time") {
-      //       this.options.time.state = "";
-      //     }
-      //   }
-      // console.log("time statet", this.options.time.state);
-
-      // this.options[key] = name === key ? value : false;
-      // });
-      //---------NAME ÄR DEN MAN KLICKAR PÅ-----------
+    change(name, value) {
       Object.keys(this.parkingState).forEach(key => {
         if (key === name) {
           this.$store.commit(key, { name: key, value });
           this.showContinue = value;
         } else {
           this.$store.commit(key, { name: key, value: false });
-          // if (key === "time") {
-          //   this.$store.commit("time", { name: key, value: "" });
-          // }
         }
       });
     }
