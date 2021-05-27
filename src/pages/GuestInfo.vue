@@ -3,12 +3,11 @@
     <q-item class="page3 background">
       <div
         class="fixed-top"
-        style="z-index: 100; height: 8%; background: linear-gradient(to bottom, rgba(13,22,54, 1) 0%, rgba(0, 0, 0, 0) 100%);"
+        style="z-index: 100; height: 10%; background: linear-gradient(to bottom, rgba(0,0,0, 1) 0%, rgba(0, 0, 0, 0) 100%);"
       />
       <div
-        @click="hide"
         class="q-gutter-md wrapper"
-        style=" padding-top: 4rem; backgroundColor: transparent; height: 70%; overflow-y: auto; "
+        style=" padding-top: 7rem; backgroundColor: transparent; height: 70%; overflow-y: auto; "
       >
         <h2
           class="title-size text-primary q-mb-none title-font"
@@ -19,7 +18,7 @@
 
         <q-form ref="validateFormRef" @submit.prevent="onSubmit">
           <q-input
-            @click.stop="show"
+            @focus="show"
             data-layout="normal"
             ref="name"
             @input="addSubmitButton"
@@ -40,10 +39,10 @@
             </template>
           </q-input>
 
-          <div class="row q-mt-none" style="backgroundColor: none;">
+          <div class="row q-my-lg" style="backgroundColor: transparent;">
             <div class="col ">
               <q-input
-                @click.stop="show"
+                @focus="show"
                 data-layout="normal"
                 @input="addSubmitButton"
                 class="search-input text-font"
@@ -64,7 +63,7 @@
             </div>
             <div class="col q-pl-md">
               <q-input
-                @click.stop="show"
+                @focus="show"
                 data-layout="numeric"
                 @input="addSubmitButton"
                 class="search-input text-font"
@@ -85,18 +84,23 @@
               </q-input>
             </div>
           </div>
-          <div class="row" style="backgroundColor: none;">
-            <div class="col text-secondary title-font text-body1">
-              Did you bring a colleague?
+          <div class="row" style="backgroundColor: transparent; ">
+            <div
+              style="font-size: 30px;"
+              class="col text-secondary title-font "
+            >
+              <div class="col-12">
+                Did you bring a colleague?
+              </div>
               <div class="row q-mt-xs">
                 <transition-group name="fade" tag="div" class="col-12">
                   <div
-                    class="col-12 q-mb-sm"
+                    class="col-12 q-mb-lg"
                     v-for="colleague in guest.colleagues"
                     v-bind:key="colleague.id"
                   >
                     <q-input
-                      @click.stop="show"
+                      @focus="show"
                       data-layout="normal"
                       @input="addColleagueButton"
                       :key="colleague.id"
@@ -124,12 +128,13 @@
             >
               <transition name="slide">
                 <div
-                  class="row q-mb-sm testy"
-                  style="backgroundColor: none; width: 100%; "
+                  class="row testy"
+                  style="margin-bottom: 48px; backgroundColor: transparent; width: 100%; height: 125px; "
                 >
                   <div
+                    style="backgroundColor: transparent; font-size: 30px"
                     v-show="addInputButton"
-                    class="col-12 q-mb-xs text-secondary title-font text-body1
+                    class="col-12 text-secondary title-font q-mb-xs 
 "
                   >
                     Add colleague
@@ -144,8 +149,8 @@
                         v-show="addInputButton"
                         @click="addColleagueInput"
                         dense
-                        size="1.3rem"
-                        class="no-border-radius q-pa-xs"
+                        style="height: 100px; width: 100px;"
+                        class="no-border-radius q-pa-xs addColleagueBtn"
                         color="green"
                         text-color="black"
                         icon="person_add_alt"
@@ -158,8 +163,7 @@
                         type="submit"
                         color="green"
                         flat
-                        size="lg"
-                        class="q-ml-sm text-font"
+                        class="q-ml-sm text-font small-size"
                         icon-right="arrow_forward"
                       />
                     </transition>
@@ -310,8 +314,9 @@ export default {
   transition: all 0.2s ease;
 }
 
-.search-input * {
-  color: white;
-  font-size: 1.4rem;
+.addColleagueBtn {
+  .q-icon {
+    font-size: 3.5rem;
+  }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-item class="page2 background q-px-xl">
+    <q-item class="page2 background">
       <div class="q-gutter-md col">
         <h2
           v-on:click="employeeDetails = false"
@@ -32,7 +32,7 @@
             :employee="employee" 
             :employeeDetails="employeeDetails"
             v-bind:key="employee.id"> </ListView> -->
-        <div class="employeesWrapper">
+        <div v-if="!employeeDetails" class="employeesWrapper">
           <span
             v-if="addScrollFade"
             class="employeesWrapper__gradient employeesWrapper__gradient--top"
@@ -169,12 +169,12 @@ export default {
 <style lang="scss">
 .page2 {
   background-image: url("../assets/page2/page2Background.jpg");
-  padding: 4rem 10rem;
+  padding: 7rem 10rem;
 }
 
 .employeesWrapper {
   position: relative;
-  height: 50%;
+  height: 60%;
 
   &__gradient {
     pointer-events: none;
@@ -207,11 +207,6 @@ export default {
 
 .header-text {
   margin-bottom: 2rem;
-}
-
-.search-input * {
-  color: white;
-  font-size: 1.4rem;
 }
 
 .avatar-img-wrapper div {

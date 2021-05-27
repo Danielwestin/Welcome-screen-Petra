@@ -35,6 +35,8 @@
   background-position: center;
 }
 
+//------------INPUT STANDARD------------//
+
 //-----------GLOBAL CSS FOR VUE-TOUCH-KEYBOARD----------------//
 
 #keyboard {
@@ -169,17 +171,39 @@
 
 //-----CUSTOMIZING QUASAR ELEMENTS-----------//
 
+//-------INPUT--------//
+
+.search-input * {
+  color: white;
+}
+
+.search-input {
+  height: 100px;
+
+  .ellipsis {
+    overflow: initial;
+  }
+
+  .q-field__label {
+    font-size: 1.8rem;
+  }
+
+  .q-field__control {
+    height: 100px;
+  }
+
+  input[type="text"] {
+    font-size: 40px;
+  }
+}
+
 .q-field--float .q-field__label {
-  font-size: 1rem;
+  font-size: 1.3rem;
 }
 
 .q-field--outlined .q-field__control:before {
   border: 1px solid rgba(255, 255, 255, 0.7);
 }
-
-// .q-field--float .q-field__label {
-//   font-size: 1rem;
-// }
 
 //------BUTTON-------//
 .q-btn__wrapper {

@@ -9,7 +9,9 @@
           class="text-primary title-size q-pb-sm title-font"
           style="margin-bottom: 2rem; backgroundColor: transparent;"
         >
-          We will remind you at {{ t }}
+          We will remind you at {{ CheckNumber(time.hour) }}:{{
+            CheckNumber(time.minute)
+          }}
         </h2>
         <p
           class="text-secondary bread-size q-pb-sm input-font"
@@ -25,8 +27,7 @@
           label="Continue"
           type="submit"
           color="green"
-          size="xl"
-          class="text-font"
+          class="text-font small-size"
           icon-right="arrow_forward"
         />
         <!-- <div
@@ -41,8 +42,13 @@
 <script>
 export default {
   computed: {
-    t() {
+    time() {
       return this.$store.getters["parkingTime"];
+    }
+  },
+  methods: {
+    CheckNumber(n) {
+      return (n < 10 ? "0" : "") + n;
     }
   }
 };
@@ -52,6 +58,6 @@ export default {
 .page6 {
   background-image: url("../assets/page6/page6Background.jpg");
 
-  padding: 4rem 10rem;
+  padding: 7rem 10rem;
 }
 </style>

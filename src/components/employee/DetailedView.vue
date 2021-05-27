@@ -2,15 +2,15 @@
   <div
     v-show="employeeDetails"
     class="q-pt-md"
-    style="width: 79%; height: 442px;"
+    style="width: 79%; height: 442px; backgroundColor: transparent;"
   >
-    <q-item clickable v-ripple style="height: 90%;">
+    <q-item clickable v-ripple style=" backgroundColor: transparent; ">
       <q-item-section avatar>
         <q-avatar size="23rem" class="avatar-img-wrapper">
           <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
         </q-avatar>
       </q-item-section>
-      <q-item-section class="q-pl-lg">
+      <q-item-section>
         <div
           style="display: flex; flex-direction: column; height: 100%; justify-content: flex-end"
         >

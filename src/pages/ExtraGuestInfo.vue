@@ -118,7 +118,7 @@ export default {
 <style lang="scss">
 .page4 {
   background-image: url("../assets/page4/page4Background.jpg");
-  padding: 4rem 10rem;
+  padding: 7rem 10rem;
 }
 
 .textfield-input * {

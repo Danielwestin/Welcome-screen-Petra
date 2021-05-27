@@ -37,12 +37,12 @@ export default {};
 <style lang="scss">
 .page8 {
   background-image: url("../assets/page8/page8Background.jpg");
-  padding: 4rem 10rem;
+  padding: 7rem 10rem;
 }
 
 .floor-plan {
   position: absolute;
-  top: 80px;
+  top: 120px;
   left: 0px;
   width: 1858px;
   height: 788px;

@@ -4,8 +4,7 @@ const state = {
     to: "/eighths-page"
   },
   time: {
-    state: "",
-
+    state: false,
     to: "/sixth-page"
   },
   checkbox2: {
@@ -16,13 +15,13 @@ const state = {
 const initialState = state;
 
 const mutations = {
-  checkbox1(state, { name, value, d }) {
+  checkbox1(state, { name, value }) {
     state[name].state = value;
   },
-  time(state, { name, value, d }) {
+  time(state, { name, value }) {
     state[name].state = value;
   },
-  checkbox2(state, { name, value, d }) {
+  checkbox2(state, { name, value }) {
     state[name].state = value;
   }
 };
